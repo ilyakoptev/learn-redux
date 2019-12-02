@@ -4,7 +4,7 @@ import React from "react";
 import {render} from "react-dom";
 import {connect} from "react-redux";
 import { User } from './app/components/User';
-import { Main } from './app/components/Main';
+import  Main  from './app/components/Main';
 
 
  class App extends React.Component {
@@ -18,22 +18,22 @@ import { Main } from './app/components/Main';
             <div>
             <h1>Hello Redux World!</h1>
             <div className="container">
-                <Main changeUsername={() => this.props.setName("Max") }/>
-                <User username={this.props.user.name}/>
+                <Main />
+                <User username={this.props.user.name} age={this.props.user.age}/>
             </div>
             </div>
         );
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => { //  state 
   return {
-    user: state.user,
-    match: state.match
+    user: state.user,  // user state include name and age 
+    match: state.match // match state 
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {  // action 
   return {
     setName: (name) => {
         dispatch({
