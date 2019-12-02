@@ -23,10 +23,16 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case "ADD":
-            state = state + action.payload
+            state = {
+                ...state,
+                result: state.result + action.payload,
+            }
             break;
         case "SUBSTRACT":
-            state = state - action.payload
+            state = {
+                ...state,
+                result: state.result - action.payload,
+            }
             break;
     }
     return state;
