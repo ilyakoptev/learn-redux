@@ -5,7 +5,7 @@ export function setName(name) {
                 type: "SET_NAME",
                 payload: name
             });
-        }, 2000);
+        }, 3000);
     }
 }
 
