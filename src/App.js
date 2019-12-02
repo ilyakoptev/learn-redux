@@ -2,18 +2,14 @@
 
 import React from "react";
 import {render} from "react-dom";
-
+import {connect} from "react-redux";
 import { User } from './app/components/User';
 import { Main } from './app/components/Main';
 
 
-export class App extends React.Component {
+ class App extends React.Component {
     constructor() {
         super();
-       
-    }
-
-    changeUsername(newName) {
        
     }
 
@@ -22,12 +18,29 @@ export class App extends React.Component {
             <div>
             <h1>Hello Redux World!</h1>
             <div className="container">
-                <Main changeUsername={this.changeUsername.bind(this)}/>
-                <User username="Ilya"/>
+                <Main changeUsername={() => this.props.setName("Anna") }/>
+                <User username={this.props.user.name}/>
             </div>
             </div>
         );
     }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    match: state.match
+  }
+}
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setName: (name) => {
+        dispatch({
+          type:"SET_NAME",
+          payload: name
+        })
+    }
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(App);

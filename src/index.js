@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {App} from './App';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from "react-redux";
 import { createStore, combineReducers, applyMiddleware } from "redux";
@@ -59,7 +59,7 @@ const myLogger = (store) => (next) => (action) => {
     next(action);
 }
 
-const store = createStore(combineReducers({ mathReducer, userReducer }), {},
+const store = createStore(combineReducers({math: mathReducer, user: userReducer }), {},
     applyMiddleware(createLogger())); //  applyMiddleware(myLogger, createLogger()));
 
 store.subscribe(() => {
