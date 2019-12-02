@@ -83,3 +83,9 @@ store.dispatch({
     type: "SUBSTRACT",
     payload: 80
 })
+
+
+store.dispatch({
+    type: "SET_AGE",
+    payload: 30
+})
