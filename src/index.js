@@ -17,7 +17,8 @@ import { createStore } from "redux";
 
 const initialState = {
     result: 1,
-    lastValues: []
+    lastValues: [],
+    userName: "Ilya"
 }
 
 const reducer = (state = initialState, action) => {
@@ -26,12 +27,15 @@ const reducer = (state = initialState, action) => {
             state = {
                 ...state,
                 result: state.result + action.payload,
+                lastValues: [...state.lastValues, action.payload]
             }
             break;
         case "SUBSTRACT":
             state = {
                 ...state,
                 result: state.result - action.payload,
+                lastValues: [...state.lastValues, action.payload]
+
             }
             break;
     }
