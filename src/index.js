@@ -13,15 +13,13 @@
 
 
 
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
 
-const initialState = {
+
+const mathReducer = (state = {
     result: 1,
-    lastValues: [],
-    userName: "Ilya"
-}
-
-const reducer = (state = initialState, action) => {
+    lastValues: []
+}, action) => {
     switch (action.type) {
         case "ADD":
             state = {
@@ -42,7 +40,30 @@ const reducer = (state = initialState, action) => {
     return state;
 }
 
-const store = createStore(reducer);
+
+const userReducer = (state = {
+    name: "Ilya",
+    age: 40
+}, action) => {
+    switch (action.type) {
+        case "SET_NAME":
+            state = {
+                ...state,
+                name: action.payload
+            }
+            break;
+        case "SET_AGE":
+            state = {
+                ...state,
+                age: action.payload
+
+            }
+            break;
+    }
+    return state;
+}
+
+const store = createStore(combineReducers({ mathReducer, userReducer }));
 
 store.subscribe(() => {
     console.group("Store updated", store.getState())
