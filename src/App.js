@@ -18,7 +18,7 @@ import { Main } from './app/components/Main';
             <div>
             <h1>Hello Redux World!</h1>
             <div className="container">
-                <Main changeUsername={() => this.props.setName("Anna") }/>
+                <Main changeUsername={() => this.props.setName("Max") }/>
                 <User username={this.props.user.name}/>
             </div>
             </div>
