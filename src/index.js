@@ -15,7 +15,12 @@
 
 import { createStore } from "redux";
 
-const reducer = (state, action) => {
+const initialState = {
+    result: 1,
+    lastValues: []
+}
+
+const reducer = (state = initialState, action) => {
     switch (action.type) {
         case "ADD":
             state = state + action.payload
@@ -27,7 +32,7 @@ const reducer = (state, action) => {
     return state;
 }
 
-const store = createStore(reducer, 1);
+const store = createStore(reducer);
 
 store.subscribe(() => {
     console.group("Store updated", store.getState())
